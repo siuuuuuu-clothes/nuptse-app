@@ -10,7 +10,10 @@ st.title("🧥 ノースフェイス ヌプシジャケット 最安値探索く
 st.write("楽天中の在庫をスキャンして、4万円以下の新品・正規品を安い順に表示します。")
 
 # アプリID（入力済み）
-APP_ID = '1071036149049800169'
+APP_ID = '1026858885431637322'
+
+# アフィリエイトID（入力済み）
+AFFILIATE_ID = '5024e14a.9af79762.5024e14b.33fb1c76'
 
 # ボタンを押したら実行
 if st.button("最安値を検索する"):
@@ -30,6 +33,7 @@ if st.button("最安値を検索する"):
         
         params = {
             'applicationId': APP_ID,
+            'affiliateId': AFFILIATE_ID, # 👈【重要】この1行を必ず追加してください！
             'keyword': 'ノースフェイス ヌプシジャケット', 
             'format': 'json',
             'sort': '+itemPrice',
@@ -54,7 +58,7 @@ if st.button("最安値を検索する"):
                     elif 'ND92234' in name: model = '⏹ 22-23モデル'
                     
                     if model != "不明":
-                        # リンク先
+                        # リンク先（アフィリエイトIDがあればaffiliateUrlを使う）
                         link_url = info.get('affiliateUrl', info['itemUrl'])
 
                         all_items.append({
